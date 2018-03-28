@@ -1,28 +1,24 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <SpringfieldNav/>
+    <SpringfieldBody/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SpringfieldBody from './components/SpringfieldBody.vue'
+import SpringfieldNav from './components/SpringfieldNav.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    SpringfieldBody,
+    SpringfieldNav
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import url('https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/lumen/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css?family=Rock+Salt');
 </style>
