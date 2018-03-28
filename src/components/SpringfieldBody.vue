@@ -9,8 +9,8 @@
         <p class="text-dark">
           <b-badge pill variant="info">Fun fact</b-badge> Did you know? We are the only community centre in all of Springfield!
         </p>
-        <b-card title="Sign up for activities" class="my-3">
-          <p class="text-dark">You can now sign up to receive notifications when activities become available!</p>
+        <b-card bg-variant="secondary" text-variant="dark" title="Sign up for activities" class="my-3">
+          <p>You can now sign up to receive notifications when activities become available!</p>
           <b-form @submit.prevent="signUp()" @reset.prevent="resetForm()">
             <b-form-row>
               <b-col xs="12" md="5">
@@ -82,7 +82,7 @@
             <b-form-row>
               <b-col xs="12" md="5" class="my-3">
                 <b-button type="submit" variant="primary" class="m-1">Submit</b-button>
-                <b-button type="reset" variant="muted" class="m-1">Reset</b-button>
+                <b-button type="reset" variant="info" class="m-1">Reset</b-button>
                 <b-button type="button" variant="success" class="my-1 mx-3" @click="randomName()">Random</b-button>
               </b-col>
               <b-col xs12 md="7" class="my-3">
@@ -164,7 +164,8 @@ export default {
           this.form.name = `${_.startCase(data.name.first)} ${_.startCase(data.name.last)}`
           this.form.email = data.email
           this.form.phone = data.phone
-          this.form.address = `${_.startCase(data.location.street)}, ${_.startCase(data.location.city)}`
+          this.form.address = `${_.startCase(data.location.street)}, ${_.startCase(data.location.city)}, ${_.startCase(data.location.state)}`
+          this.interestSelect = [this.interestOptions[Math.floor(Math.random() * this.interestOptions.length)]];
         })
     },
     clearSignUps () {
