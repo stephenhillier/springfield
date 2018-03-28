@@ -1,7 +1,7 @@
 <template>
   <b-navbar toggleable="md" type="dark" variant="primary">
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-    <b-navbar-brand href="#" style="font-family: 'Rock Salt', cursive;">SPRINGFIELD</b-navbar-brand>
+    <b-navbar-brand href="#" id="navTitle" style="font-family: 'Rock Salt', cursive;">SPRINGFIELD</b-navbar-brand>
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
         <b-nav-text>Your neighborhood community centre</b-nav-text>
