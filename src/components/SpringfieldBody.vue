@@ -116,18 +116,23 @@
 import axios from 'axios'
 import _ from 'lodash'
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
+  name: 'SpringfieldBody',
   data () {
     return {
+
+      // form value objects
+      // interestSelect stores the "interest" selections and then is joined into one string
+      // before being inserted into the form.interests property.
       interestSelect: [],
       form: {
         name: '',
         email: '',
+        phone: '',
+        address: '',
         interests: ''
       },
+
+      // list of possible interests that a user can pick from
       interestOptions: [
         'photography',
         'swimming',
@@ -135,12 +140,17 @@ export default {
         'martial arts',
         'food'
       ],
+
+      // signups: an array that holds all signed up users (this mocks a list we would receive from an API)
       signups: [],
+
+      // countdown for the auto-dismissing sign-up success alert box.
       signUpDismissCountdown: 0
     }
   },
   methods: {
     resetForm () {
+      // reset form to default, empty values
       this.form = {
         name: '',
         email: '',
@@ -151,6 +161,7 @@ export default {
       this.interestSelect = []
     },
     signUp () {
+      // when user signs up, push onto the signups array then store in localStorage
       this.signups.push(this.form)
       this.form.interests = this.interestSelect.join(', ')
       localStorage.setItem('springfieldSignUps', JSON.stringify(this.signups))
@@ -158,6 +169,7 @@ export default {
       this.resetForm()
     },
     randomName () {
+      // get some random user data from randomuser.me and load it into form
       axios.get('https://randomuser.me/api/?nat=CA')
         .then((response) => {
           const data = response.data.results[0]
@@ -165,7 +177,7 @@ export default {
           this.form.email = data.email
           this.form.phone = data.phone
           this.form.address = `${_.startCase(data.location.street)}, ${_.startCase(data.location.city)}, ${_.startCase(data.location.state)}`
-          this.interestSelect = [this.interestOptions[Math.floor(Math.random() * this.interestOptions.length)]];
+          this.interestSelect = [this.interestOptions[Math.floor(Math.random() * this.interestOptions.length)]]
         })
     },
     clearSignUps () {
@@ -174,6 +186,7 @@ export default {
     }
   },
   created () {
+    // when app loads, load previous signups from localStorage
     const prevSignUps = JSON.parse(localStorage.getItem('springfieldSignUps'))
     if (prevSignUps) {
       this.signups = prevSignUps
