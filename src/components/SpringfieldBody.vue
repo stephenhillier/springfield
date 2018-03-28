@@ -82,8 +82,8 @@
             <b-form-row>
               <b-col xs="12" md="5" class="my-3">
                 <b-button type="submit" variant="primary" class="m-1">Submit</b-button>
-                <b-button type="reset" variant="info" class="m-1">Reset</b-button>
-                <b-button type="button" variant="success" class="my-1 mx-3" @click="randomName()">Random</b-button>
+                <b-button type="reset" variant="info" class="m-1 mr-3">Reset</b-button>
+                <b-button type="button" variant="success" class="m-1" @click="randomName()">Random</b-button>
               </b-col>
               <b-col xs12 md="7" class="my-3">
                 <b-alert :show="signUpDismissCountdown"
