@@ -33,8 +33,12 @@
                                 type="email"
                                 v-model="form.email"
                                 required
-                                placeholder="Enter email">
+                                placeholder="Enter email"
+                                :state="emailNotAlreadyUsed">
                   </b-form-input>
+                    <b-form-invalid-feedback id="emailInputFeedback">
+                      Email already registered
+                    </b-form-invalid-feedback>
                 </b-form-group>
               </b-col>
             </b-form-row>
@@ -148,6 +152,12 @@ export default {
       signUpDismissCountdown: 0
     }
   },
+  computed: {
+    emailNotAlreadyUsed () {
+      // returns null if email not found in signups array, returns false if email was already used.
+      return !~this.signups.findIndex((person) => this.form.email === person.email) ? null : false
+    }
+  },
   methods: {
     resetForm () {
       // reset form to default, empty values
@@ -170,7 +180,7 @@ export default {
     },
     randomName () {
       // get some random user data from randomuser.me and load it into form
-      axios.get('https://randomuser.me/api/?nat=CA')
+      axios.get('https://randomuser.me/api/?nat=US')
         .then((response) => {
           const data = response.data.results[0]
           this.form.name = `${_.startCase(data.name.first)} ${_.startCase(data.name.last)}`
