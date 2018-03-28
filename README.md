@@ -7,4 +7,6 @@ This simple web app is built with Vue.JS. The app entry points are ```src/main.j
 but most of the business logic in ```src/components/SpringfieldBody.vue```. To mock an API, signups are
 stored in and fetched from localStorage.
 
+The form displays an error if you try to enter an email address that was already registered.
+
 There are some simple unit tests in the ```test/unit``` folder. To run them, run ```npm run test``` from the root folder.
