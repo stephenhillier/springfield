@@ -105,7 +105,7 @@
               <b-button type="button" variant="danger" class="my-3" @click="clearSignUps()">Clear all</b-button>
             </b-col>
           </b-row>
-          <b-table :items="signups" responsive></b-table>
+          <b-table :items="signups" responsive id="signupTable"></b-table>
         </b-card>
       </b-col>
     </b-row>
